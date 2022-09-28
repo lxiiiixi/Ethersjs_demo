@@ -1,6 +1,7 @@
 import React from 'react'
 import { ethers } from "ethers";
 
+// 调用合约只读方法
 export default function Contract() {
     const INFURA_ID = 'd2c3608fd90c429b9aae268da0a0dfa7'
     const provider = new ethers.providers.JsonRpcProvider(`https://mainnet.infura.io/v3/${INFURA_ID}`)

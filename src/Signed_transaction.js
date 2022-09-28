@@ -6,24 +6,44 @@ export default function Signed_transaction({ provider }) {
     const [account2, setAccount2] = useState("")
     const [amount, setAmount] = useState("")
 
+    // 构建钱包信息: 直接通过 provider 和 私钥 构建
     const privateKey1 = '9015ecdd3a15bfeef7d1ba396467c40a3f9df9c3907ad8b2967220fa70907758' // Private key of account 1
     const wallet = new ethers.Wallet(privateKey1, provider)
 
 
+    const sendMsg = async () => {
+        // 签名 utf-8
+        const signature = await wallet.signMessage('hello world');
+        console.log("signature", signature);
+
+        // This string is 66 characters long
+        const message = "0x4c8f18581c0167eb90a761b4a304e009b924f03b619a0c0e8ea3adfce20aee64";
+        // This array representation is 32 bytes long
+        const messageBytes = ethers.utils.arrayify(message);
+        const signature2 = await wallet.signMessage(messageBytes);
+        console.log(signature2);
+    }
+
+
+
     const sendTansaction = async () => {
-        console.log(account1, account2, amount);
+        console.log(account1, account2, amount, "钱包地址:", wallet);
+
+
         const senderBalanceBefore = await provider.getBalance(account1)
         const recieverBalanceBefore = await provider.getBalance(account2)
         console.log(`\nSender balance before: ${ethers.utils.formatEther(senderBalanceBefore)}`)
         console.log(`reciever balance before: ${ethers.utils.formatEther(recieverBalanceBefore)}\n`)
 
+        // 发送链上原生货币（例如 ETH，BNB）
         const tx = await wallet.sendTransaction({
             to: account2,
             value: ethers.utils.parseEther("0.025")
         })
 
+        // 等待交易上链
         await tx.wait()
-        console.log(tx)
+        console.log(tx) // 交易信息
 
         // {
         // accessList: []
@@ -45,9 +65,11 @@ export default function Signed_transaction({ provider }) {
         // wait:(confirms, timeout) => {… }
         // }
 
+
     }
     return (
         <div>
+            <button onClick={sendMsg}>Send Massage</button><hr />
             <h5> Signed_transaction</h5>
             account1: <input value={account1} onChange={(e) => setAccount1(e.target.value)}></input>
             account2: <input value={account2} onChange={(e) => setAccount2(e.target.value)}></input>
