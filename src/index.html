@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="./MetaMaskProvider.js"></script>
+</head>
+
+<body>
+    在 Ethers.js 中，provider 是一个重要的概念，它是用于与以太坊网络进行交互的对象。Provider 是一个中间件，它允许你通过 Ethers.js
+    与以太坊节点进行通信，并查询区块链上的数据、发送交易和执行智能合约方法。
+    <br />
+    Ethers.js 提供了多种类型的 Provider，每种类型对应不同的连接方式：
+    <br />
+
+    JSON-RPC Provider：这是最常见的 Provider 类型，它基于以太坊节点的 JSON-RPC 接口与以太坊网络进行通信。你可以使用 Ethers.js 提供的预定义 JSON-RPC Provider（例如
+    InfuraProvider 或 AlchemyProvider）或者自己设置自定义的 JSON-RPC Provider。
+    <br />
+
+    WebSocket Provider：WebSocketProvider 类型是基于 WebSocket 协议的 Provider，它可以实时地接收以太坊网络上发生的事件和交易。
+    <br />
+
+    Web3 Provider：Web3Provider 是与 Web3.js 兼容的 Provider，它允许你在与已经部署了 Web3 的应用程序进行交互时无缝集成 Ethers.js。
+</body>
+
+</html>
