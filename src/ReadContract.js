@@ -1,10 +1,11 @@
 // https://www.wtf.academy/en/ether-start/ReadContract/
 import { ethers } from "ethers";
 import WETHAbi from "../data/WETHAbi.json" assert { type: "json" };
+import { Mnemonic, AlchemyKey } from "../private.js"
 
 (async function main() {
     // 连接以太坊主网
-    const provider = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/Z2xliWVjYToNgU62-55w8-UuY28l79Zq`)
+    const provider = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/${AlchemyKey}`)
     // 输入abi方式一：直接复制合约编译后的abi
     const addressWETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' // WETH Contract
     const contractWETH = new ethers.Contract(addressWETH, JSON.stringify(WETHAbi), provider)

@@ -1,9 +1,9 @@
 // https://www.wtf.academy/en/ether-start/SendETH/
 import { ethers } from "ethers";
-import { Mnemonic } from "../private.js"
+import { Mnemonic, AlchemyKey } from "../private.js"
 
 (async function main() {
-    const provider = new ethers.providers.JsonRpcProvider(`https://eth-goerli.g.alchemy.com/v2/Z2xliWVjYToNgU62-55w8-UuY28l79Zq`)
+    const provider = new ethers.providers.JsonRpcProvider(`https://eth-goerli.g.alchemy.com/v2/${AlchemyKey}`)
 
     // 创建随机的wallet对象
     const wallet1 = ethers.Wallet.createRandom()

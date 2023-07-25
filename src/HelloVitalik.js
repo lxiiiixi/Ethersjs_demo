@@ -1,11 +1,12 @@
 import { ethers } from "ethers";
+import { Mnemonic, AlchemyKey } from "../private.js"
 
 // 声明一个provider用于连接以太坊网络
 
 const provider1 = new ethers.getDefaultProvider();
 // 1. ethers内置了一些公用rpc，方便用户连接以太坊，不过访问速度有限制，仅测试用，生产环境还是要申请个人rpc。
 
-const provider3 = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/Z2xliWVjYToNgU62-55w8-UuY28l79Zq");
+const provider3 = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/${AlchemyKey}`);
 
 const main = async () => {
     const balance1 = await provider1.getBalance("vitalik.eth");

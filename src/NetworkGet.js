@@ -1,11 +1,14 @@
 import { ethers } from "ethers";
+import { Mnemonic, AlchemyKey } from "../private.js"
+
 
 (async function main() {
 
     // 连接以太坊主网
-    const providerETH = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/Z2xliWVjYToNgU62-55w8-UuY28l79Zq`)
+    const providerETH = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/${AlchemyKey}`)
     // 连接Goerli测试网
-    const providerGoerli = new ethers.providers.JsonRpcProvider(`https://eth-goerli.g.alchemy.com/v2/Z2xliWVjYToNgU62-55w8-UuY28l79Zq`)
+    const provider = new ethers.providers.JsonRpcProvider(`https://eth-goerli.g.alchemy.com/v2/${AlchemyKey}`) // 根据节点获取 provider
+
 
     // 1. 查询vitalik在主网和Goerli测试网的ETH余额
     console.log("1. 查询vitalik在主网和Goerli测试网的ETH余额");
